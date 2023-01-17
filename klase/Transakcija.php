@@ -21,6 +21,12 @@ class Transakcija
         $this->clan_id = $clan_id;
     }
 
+    public function dodajTransakcija($datum, $tip, $valuta, $iznos, $clan_id)
+    {
+        require 'connection.php';
 
+        $query = "INSERT INTO transakcije values (NULL, '$datum', '$tip', '$valuta', '$iznos', '$clan_id')";
+        return $db_conn->query($query);
+    }
     
 }
