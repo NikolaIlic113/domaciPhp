@@ -1,5 +1,6 @@
 $(function () {
     login();
+    izbrisiTransakcija();
 });
 
 function login() {
@@ -24,6 +25,21 @@ function login() {
                 else {
                     alert("Neuspesan login!")
                 }
+            }
+        })
+    })
+
+}
+
+function izbrisiTransakcija() {
+
+    $(document).on('click', '#izbrisi_transakcijabutton', function () {
+
+        $.ajax({
+            url: 'ajax/izbrisi_transakciju.php',
+            method: 'POST',
+            data: {
+                transakcija_id: $(this).attr('transakcija_id'),
             }
         })
     })
