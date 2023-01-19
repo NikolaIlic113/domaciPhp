@@ -1,6 +1,7 @@
 $(function () {
     login();
     izbrisiTransakcija();
+    pretraziTransakcija();
 });
 
 function login() {
@@ -40,6 +41,25 @@ function izbrisiTransakcija() {
             method: 'POST',
             data: {
                 transakcija_id: $(this).attr('transakcija_id'),
+            }
+        })
+    })
+
+}
+
+function pretraziTransakcija() {
+
+    $(document).on('keyup', '#datum_input', function () {
+
+        $.ajax({
+            url: 'ajax/pretrazi_transakciju.php',
+            method: 'POST',
+            data: {
+                datum: $(this).val(),
+                clan_id: localStorage.getItem('clan')
+            },
+            success: function (data) {
+                $('#body_tabela').html(data)
             }
         })
     })
