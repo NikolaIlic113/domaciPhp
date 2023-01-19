@@ -2,6 +2,7 @@ $(function () {
     login();
     izbrisiTransakcija();
     pretraziTransakcija();
+    sortiraj();
 });
 
 function login() {
@@ -62,6 +63,34 @@ function pretraziTransakcija() {
                 $('#body_tabela').html(data)
             }
         })
+    })
+
+}
+
+function sortiraj() {
+
+    $(document).on('click', 'th', function () {
+
+        if (($(this).attr("sortiranje"))) {
+
+            $.ajax({
+                url: 'ajax/sortiraj_transakcije.php',
+                method: 'POST',
+                data: {
+                    datum: $(this).val(),
+                    clan_id: localStorage.getItem('clan'),
+                    sortiranje: $(this).attr("sortiranje")
+                },
+                success: function (data) {
+                    $('#body_tabela').html(data)
+                }
+            })
+        } else {
+            alert("Sortiranje je moguce samo po iznosu!")
+        }
+
+        $(this).attr("sortiranje") == "DESC" ? $(this).attr("sortiranje", "ASC") : $(this).attr("sortiranje", "DESC")
+
     })
 
 }

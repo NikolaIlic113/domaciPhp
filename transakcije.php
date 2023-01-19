@@ -12,7 +12,7 @@
 
 <body>
 
-    <input type="hidden" value="">
+    
 
     <div class="body-transakcije">
 
@@ -28,7 +28,7 @@
                         <th>DATUM</th>
                         <th>TIP</th>
                         <th>VALUTA</th>
-                        <th>IZNOS</th>
+                        <th sortiranje="DESC">IZNOS</th>
                         <th> </th>
                     </tr>
                 </thead>
